@@ -1,0 +1,91 @@
+{%extends 'home/base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+  {% bootstrap_css %}
+  <!-- <link rel="stylesheet" href="{% static 'css/detail.css' %}"> -->
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+
+		<div class="container">
+			<div class="jumbtron">
+				<h2 class="title">{{ object.name }}</h2>
+			 </div>
+	     </div>
+<!---News-->
+		<div class="container">
+			<div class="row">
+			<div class="col-sm-4">
+				<legend>breakfast</legend>
+                   <div class="card">
+
+                            {% for b in object.breakfast.all %}
+                            <img class="pic"  src="{{ b.image.url}}" style="border-radius:50%; height: 50px; width:50px;" alt="Big Sur">
+							     <p>{{ b.description}}
+									<!-- <small class="text-muted">{{new.date_posted | date:"F d, Y" }}</small> -->
+								</p>
+					
+							{% endfor %}
+				  </div>
+			  </div>
+				<div class="col-sm-4">
+					<legend>Lunch</legend>
+						<div class="card">
+
+										{% for l in object.lunch.all %}
+                                        <img class="pic"  src="{{ l.image.url}}" style="border-radius:50%; height: 50px; width:50px;" alt="Big Sur">
+                                        <p>{{ l.description}}
+                                           <!-- <small class="text-muted">{{new.date_posted | date:"F d, Y" }}</small> -->
+                                       </p>
+                           
+                                   {% endfor %}
+						  </div>
+                 </div>
+                 <div class="col-sm-4">
+					<legend>Lunch</legend>
+						<div class="card">
+
+										{% for s in object.supper.all %}
+                                        <img class="pic"  src="{{ s.image.url}}" style="border-radius:50%; height: 50px; width:50px;" alt="Big Sur">
+                                        <p>{{ s.description}}
+                                           <!-- <small class="text-muted">{{new.date_posted | date:"F d, Y" }}</small> -->
+                                       </p>
+                           
+                                   {% endfor %}
+						  </div>
+				 </div>
+			 </div>
+			</div>
+<div class="container">
+
+	<legend>Important Notes</legend>
+	<div class="row">
+	{% for n in object.note.all %}
+	<div class="col-sm-3">
+		<div class="card border-primary mb-3" style="max-width: 18rem;">
+			<div class="card-header"><h5>{{ b.name }}</h5></div>
+			<div class="card-body text-primary">
+			  <p class="card-title">{{b.details}}</p>
+			  <p class="card-text">{{b.contacts}}</p>
+			</div>
+	</div>
+    </div>
+	{% endfor %}
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+	<article class="Profile">
+		<legend>List of Neighbours</legend>
+		{% for m in object.profile.all %}
+		<img class="pic"  src="{{ m.image.url}}" style="border-radius:50%; height: 50px; width:50px;" alt="Big Sur">
+	        <span>{{ m.user.username }}</span>
+		{% endfor %}
+	</article>
+</div>
+</div>
+</div>
+<footer></footer>
+{% endblock %}
