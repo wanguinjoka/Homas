@@ -9,6 +9,6 @@ from .models import Week, Breakfast, Supper, Lunch, Clean, Item, Note
 
 def home(request):
     context={
-        'week': Week.objects.all()
+        'weeks': Week.objects.all()
     }
     return render(request,'home/index.html', context)
