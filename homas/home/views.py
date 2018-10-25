@@ -15,3 +15,9 @@ def home(request):
 
 class WeekDetailView(LoginRequiredMixin, DetailView):
      model = Week
+
+class WeekUpdateView(LoginRequiredMixin,UpdateView):
+    model = Week
+    fields = ['image','quote']
+
+

@@ -1,0 +1,20 @@
+{%extends 'home/base.html'%}
+{% load crispy_forms_tags %}
+         {% block content %}
+         
+		 <div class="container" style="padding:5">
+		 <div class="content-section">
+               <h2>{{week.name}}</h2>
+	       <form method="POST">
+		   {% csrf_token %}
+		    <fieldset class="form-group">
+			    <legend class="border-bottom mb-4">Customize your week by adding your day pics and quote</legend>
+			      {{ form|crispy }}
+		     </fieldset>
+		      <div class="form-group">
+			   <button class="btn btn-outline-info" type="submit">Update</button>
+		      </div>
+	       </form>
+       </div>
+   </div>
+         {% endblock %}

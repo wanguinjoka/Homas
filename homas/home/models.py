@@ -12,6 +12,9 @@ class Week(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('home')
+
 class Breakfast(models.Model):
     image = models.ImageField(upload_to='home_pics', default='default.jpg')
     description = models.CharField(max_length = 100)
