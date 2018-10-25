@@ -21,6 +21,11 @@ class WeekUpdateView(LoginRequiredMixin,UpdateView):
     model = Week
     fields = ['image','quote']
 
+class CleanCreateView(LoginRequiredMixin, CreateView):
+    model = Clean
+    fields = ['room','details','week']
+
+
 
 @login_required
 def MealPlan(request):

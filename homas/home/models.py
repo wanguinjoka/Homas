@@ -47,6 +47,9 @@ class Clean(models.Model):
     def __str__(self):
         return self.room
 
+    def get_absolute_url(self):
+        return reverse('week-detail', args={self.week.id})
+
 class Item(models.Model):
     name = models.CharField(max_length = 100)
     quantity = models.CharField(max_length = 100)
