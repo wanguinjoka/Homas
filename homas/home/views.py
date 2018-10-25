@@ -25,6 +25,21 @@ class CleanCreateView(LoginRequiredMixin, CreateView):
     model = Clean
     fields = ['room','details','week']
 
+class ItemCreateView(LoginRequiredMixin, CreateView):
+    model = Item
+    fields = ['name','quantity','week']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class NoteCreateView(LoginRequiredMixin, CreateView):
+    model = Note
+    fields = ['name','week']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 @login_required
