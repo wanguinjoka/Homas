@@ -21,3 +21,4 @@ class WeekUpdateView(LoginRequiredMixin,UpdateView):
     fields = ['image','quote']
 
 
+
