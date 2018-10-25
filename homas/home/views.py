@@ -12,3 +12,6 @@ def home(request):
         'weeks': Week.objects.all()
     }
     return render(request,'home/index.html', context)
+
+class WeekDetailView(LoginRequiredMixin, DetailView):
+     model = Week

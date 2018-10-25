@@ -13,8 +13,8 @@
               <img class="card-img-top" src="{{ week.image.url}}" alt="Card image cap">
 
                   <div class="card-body">
-
-                    <button type="button" class="btn btn-outline-primary"><a href="{{ week.name }}">{{ week.name }}</a></button>
+                    <p>{{week.quote}}</p>
+                    <button type="button" class="btn btn-outline-primary"><a href="{% url 'week-detail' week.id %}">{{ week.name }}</a></button>
 
                 </div>
             </div>

@@ -43,7 +43,7 @@
 						  </div>
                  </div>
                  <div class="col-sm-4">
-					<legend>Lunch</legend>
+					<legend>Dinner</legend>
 						<div class="card">
 
 										{% for s in object.supper.all %}
@@ -64,28 +64,40 @@
 	{% for n in object.note.all %}
 	<div class="col-sm-3">
 		<div class="card border-primary mb-3" style="max-width: 18rem;">
-			<div class="card-header"><h5>{{ b.name }}</h5></div>
+			<div class="card-header"><h5>{{ n.caption }}</h5></div>
 			<div class="card-body text-primary">
-			  <p class="card-title">{{b.details}}</p>
-			  <p class="card-text">{{b.contacts}}</p>
+			  <p class="card-title">{{n.author}}</p>
+	
 			</div>
 	</div>
     </div>
 	{% endfor %}
-	</div>
+	
 </div>
 
 <div class="container">
-	<div class="row">
+	<div class="col-sm-3">
 	<article class="Profile">
-		<legend>List of Neighbours</legend>
-		{% for m in object.profile.all %}
-		<img class="pic"  src="{{ m.image.url}}" style="border-radius:50%; height: 50px; width:50px;" alt="Big Sur">
-	        <span>{{ m.user.username }}</span>
+		<legend>Items to Buy</legend>
+		{% for i in object.item.all %}
+        <p class="card-title">{{i.name}}</p>
+	        <span>{{ i.quantity }}</span>
 		{% endfor %}
 	</article>
 </div>
 </div>
 </div>
+<div class="container">
+	<div class="col-sm-3">
+	<article class="Profile">
+		<legend>Cleaning Duty</legend>
+		{% for c in object.room.all %}
+        <p class="card-title">{{c.room}}</p>
+	        <span>{{ c.details }}</span>
+		{% endfor %}
+	</article>
+</div>
+</div>
+
 <footer></footer>
 {% endblock %}

@@ -1,10 +1,12 @@
 from django.conf.urls import url
+from .views import WeekDetailView
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
     url('^$', views.home, name='home'),
+    url(r'^Week/(?P<pk>[0-9]+)/$', WeekDetailView.as_view(), name='week-detail'),
 
 ]
 if settings.DEBUG:
