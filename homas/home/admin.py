@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Week, Breakfast, Lunch, Supper,Clean,Item,Note
+from .models import Week, Breakfast, Lunch, Supper,Clean,Item,Note, Supplier
 
 # Register your models here.
 admin.site.register(Week)
@@ -9,3 +9,4 @@ admin.site.register(Supper)
 admin.site.register(Clean)
 admin.site.register(Item)
 admin.site.register(Note)
+admin.site.register(Supplier)

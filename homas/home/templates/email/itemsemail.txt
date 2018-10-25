@@ -1,0 +1,5 @@
+Hello {{name}}
+
+This are the list of items required for {{week.name}}.
+
+{{week.item.all}}

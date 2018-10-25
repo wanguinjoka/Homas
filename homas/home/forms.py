@@ -20,3 +20,7 @@ class SupperUpdateForm(forms.ModelForm):
     class Meta:
         model = Supper
         fields = ['image', 'description', 'week']
+
+class SupplierForm(forms.Form):
+    name = forms.CharField(label='Business Name', max_length=30)
+    email = forms.EmailField(label='Email')

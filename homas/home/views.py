@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, CreateView,UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from .email import send_items_email
 from .models import Week, Breakfast, Supper, Lunch, Clean, Item, Note
-from .forms import BreakfastUpdateForm, LunchUpdateForm, SupperUpdateForm
+from .forms import BreakfastUpdateForm, LunchUpdateForm, SupperUpdateForm, SupplierForm
 # Create your views here.
 
 def home(request):
@@ -30,16 +31,41 @@ class ItemCreateView(LoginRequiredMixin, CreateView):
     fields = ['name','quantity','week']
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 class NoteCreateView(LoginRequiredMixin, CreateView):
     model = Note
-    fields = ['name','week']
+    fields = ['caption','week']
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
+
+class NoteDeleteView(LoginRequiredMixin, DeleteView):
+     model = Note
+     success_url= '/'
+
+class ItemDeleteView(LoginRequiredMixin, DeleteView):
+     model = Item
+     success_url = '/'
+
+
+def items_today(request):
+    if request.method == 'POST':
+        form = SupplierForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+
+            supplier = Supplier(name = name,email =email)
+            supplier.save()
+            send_items_email(name,email)
+
+            HttpResponseRedirect('home')
+        else:
+            form = SupplierForm()
+    return render(request, 'home/index.html', {'form':form})
 
 
 @login_required

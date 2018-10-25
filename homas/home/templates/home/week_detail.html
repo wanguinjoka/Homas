@@ -1,5 +1,6 @@
 {%extends 'home/base.html'%}
 {% load bootstrap4 %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block styles %}
   {% bootstrap_css %}
@@ -84,6 +85,16 @@
 	        <span>{{ i.quantity }}</span>
 		{% endfor %}
 	</article>
+	<div class="container-fluid">
+        <legend>Send email to Supplier</legend>
+		<form method="post">
+		  {%csrf_token%}
+	  
+		  {{ supplierform | crispy }}
+		  <input type="submit" value="Supplier">
+		</form>
+	  
+	  </div>
 </div>
 </div>
 </div>
