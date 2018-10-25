@@ -8,6 +8,7 @@ urlpatterns=[
     url('^$', views.home, name='home'),
     url(r'^Week/(?P<pk>[0-9]+)/$', WeekDetailView.as_view(), name='week-detail'),
     url(r'^Week/(?P<pk>[0-9]+)/update/$', WeekUpdateView.as_view(), name='week-update'),
+    url(r'^mealplan/', views.MealPlan, name = 'mealplan'),
 
 ]
 if settings.DEBUG:

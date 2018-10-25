@@ -7,16 +7,16 @@ class BreakfastUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Breakfast
-        fields = ['image', 'details', 'week']
+        fields = ['image', 'description', 'week']
 
 class LunchUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Lunch
-        fields = ['image', 'details', 'week']
+        fields = ['image', 'description', 'week']
 
 class SupperUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Supper
-        fields = ['image', 'details', 'week']
+        fields = ['image', 'description', 'week']

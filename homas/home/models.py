@@ -16,7 +16,7 @@ class Week(models.Model):
         return reverse('home')
 
 class Breakfast(models.Model):
-    image = models.ImageField(upload_to='home_pics', default='default.jpg')
+    image = models.ImageField(upload_to='home_pics/', default='default.jpg')
     description = models.CharField(max_length = 100)
     week = models.ForeignKey(Week, related_name='breakfast', on_delete=models.CASCADE)
 
@@ -24,7 +24,7 @@ class Breakfast(models.Model):
         return f'{self.week.name} Breakfast'
 
 class Lunch(models.Model):
-    image = models.ImageField(upload_to='home_pics', default='default.jpg')
+    image = models.ImageField(upload_to='home_pics/', default='default.jpg')
     description = models.CharField(max_length = 100)
     week = models.ForeignKey(Week, related_name='lunch', on_delete=models.CASCADE)
 
@@ -32,7 +32,7 @@ class Lunch(models.Model):
         return f'{self.week.name} Lunch'
 
 class Supper(models.Model):
-    image = models.ImageField(upload_to='home_pics', default='default.jpg')
+    image = models.ImageField(upload_to='home_pics/', default='default.jpg')
     description = models.CharField(max_length = 100)
     week = models.ForeignKey(Week, related_name='supper', on_delete=models.CASCADE)
 
@@ -45,7 +45,7 @@ class Clean(models.Model):
     week = models.ForeignKey(Week, related_name='room', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.room }'
+        return self.room
 
 class Item(models.Model):
     name = models.CharField(max_length = 100)
